@@ -38,7 +38,7 @@ namespace POPChineseLocalization
             {
                 return cache;
             }
-            var cacheFile = Path.Combine(TextDir, key);
+            var cacheFile = Path.Combine(TextDir, $"{key}.txt");
             if (!File.Exists(cacheFile))
             {
                 File.WriteAllText(cacheFile, "");
