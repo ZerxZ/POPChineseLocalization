@@ -8,9 +8,7 @@ namespace POPChineseLocalization.Patch
     {
         public static void Prefix(ref string message)
         {
-            POPChineseMain.LogInfo($"Translate message:{message}"); 
-            if (!AutoTranslator.Default.TryTranslate(message, out var translated)) return;
-            POPChineseMain.LogInfo($"Translate translated:{translated}");
+            if (!message.TryTranslate(out var translated)) return;
             message = translated;
         }
     }
