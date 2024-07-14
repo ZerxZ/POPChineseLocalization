@@ -27,7 +27,7 @@
         <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugType>pdbonly</DebugType>
         <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
+        <OutputPath>..\..\..\plugins\POPChineseLocalization\</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
@@ -53,6 +53,9 @@
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
         <Reference Include="System.Xml"/>
+        <Reference Include="Unity.TextMeshPro">
+          <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+        </Reference>
         <Reference Include="UnityEngine">
           <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\UnityEngine.dll</HintPath>
           <Private>False</Private>
@@ -60,6 +63,9 @@
         <Reference Include="UnityEngine.CoreModule">
           <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
           <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TextCoreModule">
+          <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.UI">
           <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\UnityEngine.UI.dll</HintPath>
