@@ -89,6 +89,7 @@
     <ItemGroup>
         <Compile Include="Patchs\DateAddMessagePatch.cs" />
         <Compile Include="Patchs\LogControllerPatch.cs" />
+        <Compile Include="Patchs\ToolTipManagerPatch.cs" />
         <Compile Include="POPChineseMain.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="TranslateExtension.cs" />
