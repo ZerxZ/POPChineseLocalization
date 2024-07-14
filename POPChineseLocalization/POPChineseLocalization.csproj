@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{BBE27E22-39D8-476D-968F-705504030DFF}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>POPChineseLocalization</RootNamespace>
+        <AssemblyName>POPChineseLocalization</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>..\..\..\plugins\POPChineseLocalization</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="0Harmony">
+          <HintPath>..\..\..\core\0Harmony.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Assembly-CSharp">
+          <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\Assembly-CSharp.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="BepInEx">
+          <HintPath>..\..\..\core\BepInEx.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="ExIni">
+          <HintPath>..\..\..\plugins\XUnity.AutoTranslator\ExIni.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Xml"/>
+        <Reference Include="UnityEngine">
+          <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\UnityEngine.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+          <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+          <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\UnityEngine.UI.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UIModule">
+          <HintPath>..\..\..\..\PortalsOfPhereon_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="XUnity.AutoTranslator.Plugin.BepInEx">
+          <HintPath>..\..\..\plugins\XUnity.AutoTranslator\XUnity.AutoTranslator.Plugin.BepInEx.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="XUnity.AutoTranslator.Plugin.Core">
+          <HintPath>..\..\..\plugins\XUnity.AutoTranslator\XUnity.AutoTranslator.Plugin.Core.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="XUnity.AutoTranslator.Plugin.ExtProtocol">
+          <HintPath>..\..\..\plugins\XUnity.AutoTranslator\XUnity.AutoTranslator.Plugin.ExtProtocol.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="XUnity.Common">
+          <HintPath>..\..\..\core\XUnity.Common.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Patchs\DateAddMessagePatch.cs" />
+        <Compile Include="Patchs\LogControllerPatch.cs" />
+        <Compile Include="POPChineseMain.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>
