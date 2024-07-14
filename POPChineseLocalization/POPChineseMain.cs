@@ -2,6 +2,8 @@
 using System.IO;
 using BepInEx;
 using HarmonyLib;
+using TMPro;
+using UnityEngine;
 using XUnity.AutoTranslator.Plugin.Core;
 
 namespace POPChineseLocalization
@@ -27,23 +29,53 @@ namespace POPChineseLocalization
             I = this;
             LogInfo("POPChineseLocalization loaded!");
             LanguageDir = Path.GetDirectoryName(AutoTranslatorSettings.DefaultRedirectedResourcePath);
+            AutoTranslator.Default.RegisterOnTranslatingCallback(OnTranslating);
+        }
+        private void OnTranslating(ComponentTranslationContext obj)
+        {
+            var isTranslated = !string.IsNullOrWhiteSpace(obj.OverriddenTranslatedText);
+            var objName      = "";
+            // LogInfo($"[Translate] Untranslated: {typeof(obj.OriginalText)}");
+            switch (obj.Component)
+            {
+                case MonoBehaviour mb:
+                    objName = mb.name;
+
+                    break;
+                case Component c:
+                    objName = c.name;
+                    break;
+                case GameObject go:
+                    objName = go.name;
+                    break;
+                default:
+                    objName = obj.Component.GetType().Name;
+                    break;
+            }
+
+            GetTranslationCache(objName, isTranslated).AddTranslationToCache(obj.OriginalText, isTranslated ? objName : obj.OriginalText);
         }
         private void OnDestroy()
         {
             _harmony.UnpatchSelf();
         }
-        public static SimpleTextTranslationCache GetTranslationCache(string key)
+        public static SimpleTextTranslationCache GetTranslationCache(string key, bool translated = false)
         {
             if (TranslationCache.TryGetValue(key, out var cache))
             {
                 return cache;
             }
-            var cacheFile = Path.Combine(TextDir, $"{key}.txt");
+            var untranslatedDir = Path.Combine(TextDir, translated ? "Translated" : "Untranslated");
+            if (!Directory.Exists(untranslatedDir))
+            {
+                Directory.CreateDirectory(untranslatedDir);
+            }
+            var cacheFile = Path.Combine(untranslatedDir, $"{key}.txt");
             if (!File.Exists(cacheFile))
             {
                 File.WriteAllText(cacheFile, "");
             }
-            cache = new SimpleTextTranslationCache(cacheFile,true);
+            cache = new SimpleTextTranslationCache(cacheFile, true);
             TranslationCache[key] = cache;
             return cache;
         }
