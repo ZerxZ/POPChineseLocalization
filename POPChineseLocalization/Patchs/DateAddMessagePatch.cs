@@ -8,7 +8,7 @@ namespace POPChineseLocalization.Patch
     {
         public static void Prefix(ref string message,bool paragraph )
         {
-            if (!message.TryTranslate(nameof(DateAddMessagePatch),out var translated)) return;
+            if (!message.TryTranslate("DateAddMessage",out var translated)) return;
             message = translated;
         }
     }

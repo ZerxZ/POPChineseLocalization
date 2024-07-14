@@ -9,6 +9,10 @@ namespace POPChineseLocalization
             POPChineseMain.LogInfo($"[{prefix}Translate] Untranslated: {text}");
             if (!AutoTranslator.Default.TryTranslate(text, out translated))
             {
+                if (string.IsNullOrWhiteSpace(prefix))
+                {
+                    prefix = "translate";
+                }
                 POPChineseMain.GetTranslationCache(prefix).AddTranslationToCache(text, text);
                 return false;
             }

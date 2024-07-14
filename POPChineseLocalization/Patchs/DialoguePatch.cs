@@ -21,11 +21,11 @@ namespace POPChineseLocalization.Patch
             {
                 s = translated;
             }
-            if (a.text.TryTranslate( "Dialogue.Answer",out var translated2))
+            if (a.text.TryTranslate( "Dialogue",out var translated2))
             {
                 a.text = translated2;
             }
-            if (a.reqFailedText.TryTranslate( "Dialogue.Answer",out var translated3))
+            if (a.reqFailedText.TryTranslate( "Dialogue",out var translated3))
             {
                 a.reqFailedText = translated3;
             }
@@ -40,11 +40,11 @@ namespace POPChineseLocalization.Patch
             }
             foreach (var answer in a)
             {
-                if (answer.text.TryTranslate( "Dialogue.Answer",out var translated2))
+                if (answer.text.TryTranslate( "Dialogue",out var translated2))
                 {
                     answer.text = translated2;
                 }
-                if (answer.reqFailedText.TryTranslate( "Dialogue.Answer",out var translated3))
+                if (answer.reqFailedText.TryTranslate( "Dialogue",out var translated3))
                 {
                     answer.reqFailedText = translated3;
                 }
