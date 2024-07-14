@@ -94,6 +94,8 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Patchs\DateAddMessagePatch.cs" />
+        <Compile Include="Patchs\DialoguePatch.cs" />
+        <Compile Include="Patchs\PopUpControllerPatch.cs" />
         <Compile Include="Patchs\LogControllerPatch.cs" />
         <Compile Include="Patchs\ToolTipManagerPatch.cs" />
         <Compile Include="POPChineseMain.cs" />

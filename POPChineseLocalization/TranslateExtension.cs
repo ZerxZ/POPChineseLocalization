@@ -6,8 +6,12 @@ namespace POPChineseLocalization
     {
         public static bool TryTranslate(this string text,string prefix, out string translated)
         {
-            POPChineseMain.LogInfo($"[{prefix}Translate] Untranslated: {text}"); 
-            if (!AutoTranslator.Default.TryTranslate(text, out  translated)) return false;
+            POPChineseMain.LogInfo($"[{prefix}Translate] Untranslated: {text}");
+            if (!AutoTranslator.Default.TryTranslate(text, out translated))
+            {
+                POPChineseMain.GetTranslationCache(prefix).AddTranslationToCache(text, text);
+                return false;
+            }
             POPChineseMain.LogInfo($"[{prefix}Translate] Translated: {translated}"); 
             return true;
         }

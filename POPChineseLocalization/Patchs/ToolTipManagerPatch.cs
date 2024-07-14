@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using TMPro;
 using UnityEngine;
 
 namespace POPChineseLocalization.Patch
@@ -38,6 +39,32 @@ namespace POPChineseLocalization.Patch
                     tmpText.text = translated;
                 }
             }
+            foreach (var geneticStatGo in __instance.geneticStats)
+            {
+                var tmpText = geneticStatGo.GetComponent<TMP_Text>();
+                if (tmpText is null)
+                {
+                    continue;
+                }
+                if (tmpText.text.TryTranslate("ToolTipManager_showCharacterTooltip",out  translated))
+                {
+                    tmpText.text = translated;
+                }
+            }
         }
+        // [HarmonyPatch(typeof(ToolTipManager), nameof(ToolTipManager.getTextForAction))]
+        // [HarmonyPostfix]
+        // public static void getTextForAction_Postfix(OWInterface.ActionButtons a ,ref string __result)
+        // {
+        //     if (!__result.TryTranslate("ToolTipManager_getTextForAction",out var translated)) return;
+        //     __result = translated;
+        // }
+        // [HarmonyPatch(typeof(ToolTipManager), nameof(ToolTipManager.getTextForPartySpecial))]
+        // [HarmonyPostfix]
+        // public static void getTextForPartySpecial_Postfix(Party.PartyTraits p ,ref string __result)
+        // {
+        //     if (!__result.TryTranslate("ToolTipManager_getTextForPartySpecial",out var translated)) return;
+        //     __result = translated;
+        // }
     }
 }
